@@ -3,20 +3,23 @@ import Churrasco from "../components/Churrasco/Churrasco"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
+import { excluir, getChurras, postChurras } from "../services/axios.service";
 
 export default function Home() {
   const navigate = useNavigate();
-  const [lista, setLista] = useState([]) 
+  const [lista, setLista] = useState<any[]>([]) 
   const [loading, setLoading] = useState(true)
 
-  const deletar =(ref:any) => {
-    axios.delete(`http://localhost:3000/churrascos/${ref}`)    
+  const deletar =  (ref:string) => {
+    // axios.delete(`http://localhost:3000/churrascos/${ref}`).then(() => getChurras());
+    const del =  excluir(ref).then(() => getChurras().then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) ))
   }
 
+  // const getChurras = () => axios.get("http://localhost:3000/churrascos").then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) );  
   useEffect(() => {
-    axios.get("http://localhost:3000/churrascos").then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) );
+    getChurras().then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) );
     
-  }, [deletar]);
+  }, []);
 
   const edit = (ref:any) => {
     navigate('/editchurras', {state: {ref}})
@@ -38,7 +41,7 @@ export default function Home() {
           <h4 className="w-[15%] bg-slate-200 text-center">Editar/ Excluir</h4>
         </div> }
         <div>
-          {loading ? <h2 className="text-center m-[100px] text-slate-600 font-bold text-4xl">Loading...</h2> : lista.map((e) => <Churrasco key={e.id} data={e.data} homens={e.homens} mulheres={e.mulheres} criancas={e.criancas} delete={() => deletar(e.id)} editar={() => edit(e)} />)}
+          {loading ? <h2 className="text-center m-[100px] text-slate-600 font-bold text-4xl">Loading...</h2> : lista.map((e) => <Churrasco key={e.id} data={e.data} homens={e.homens} mulheres={e.mulheres} criancas={e.criancas} deleta={() => deletar(e.id)} editar={() => edit(e)} />)}
         </div>
        
       </div>

@@ -6,6 +6,8 @@ import axios from "axios";
 import Navbar from "../components/Navbar/Navbar";
 import PageTitle from "../components/PageTitle/PageTitle";
 import Input from "../components/FormChurras/components/Input"
+import { postChurras } from "../services/axios.service";
+import { useNavigate } from "react-router-dom";
 
 interface Inputs {
   data: Date
@@ -15,13 +17,11 @@ interface Inputs {
 }
 
 const schema = yup.object({
-    data: yup.date().min(new Date(), 'Erro min data').required('Erro na data'),
+    data: yup.date().min(new Date(), 'Data precisa ser definida com pelo menos um dia de antecedencia').required('Erro na data'),
     homens: yup.number().positive('Precisa ter pelo menos 1 homem').integer().required("O campo homens e necessario"),
     mulheres: yup.number().positive('Precisa ter pelo menos 1 mulher').integer().required("O campo mulheres e necessario"),
     criancas: yup.number().min(0, "Criancas nao pode ser negativo").integer()
   }).required()
-
-  // criancas: yup.number().min(0).integer()
 
 export default function FormChurras() {
   const {
@@ -35,10 +35,10 @@ export default function FormChurras() {
     mode: 'onChange'
   })
 
-  // console.log(watch("data"))
+  const navigate = useNavigate();
 
   const onSubmitThis = (data: Inputs ) => {
-    axios.post('http://localhost:3000/churrascos', ({id: nanoid(),data:data.data, homens: Number(data.homens), mulheres: Number(data.mulheres), criancas: Number(data.criancas)}));
+    const post = postChurras(nanoid(), data).then(() => navigate('/'))
     reset();
     console.log(data);
     console.log(errors);

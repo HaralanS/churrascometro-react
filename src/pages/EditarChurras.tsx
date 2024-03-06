@@ -3,10 +3,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form"
 import * as yup from "yup"
 import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Input from "../components/FormChurras/components/Input";
 import PageTitle from "../components/PageTitle/PageTitle";
+import { edit } from "../services/axios.service";
 
 interface Inputs {
   data: Date
@@ -29,7 +30,6 @@ export default function EditChurras() {
   const {
     register,
     handleSubmit,
-    reset,
     watch,
     formState: { errors },
   } = useForm<Inputs>({
@@ -37,10 +37,11 @@ export default function EditChurras() {
     mode: 'onChange'
   })
   
+  const navigate = useNavigate();
 
   const onSubmitThis = (data: Inputs) => {
-  
-    axios.put(`http://localhost:3000/churrascos/${churrasco.id}`, ({id: churrasco.id,data:data.data, homens: Number(data.homens), mulheres: Number(data.mulheres), criancas: Number(data.criancas)}))
+    const editar = edit(churrasco, data).then(() => navigate('/'));
+    
   }
 
   function formatDate(date = new Date()) {
