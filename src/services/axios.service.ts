@@ -1,10 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
+import { IChurrasco } from '../interfaces/ChurrascoResponse.interface';
+
 
 const BASE_URL = 'http://localhost:3000/churrascos/';
 
 
-export const postChurras = (ref:any, data: any) => {
-  return axios.post(BASE_URL, ({id: ref,data:data.data, homens: Number(data.homens), mulheres: Number(data.mulheres), criancas: Number(data.criancas)}))
+export const postChurras = <T>( data:IChurrasco): Promise<AxiosResponse<T, any>> => {
+  return axios.post(BASE_URL, (data))
 }
 
 export const getChurras = async <T>(): Promise<AxiosResponse<T, any>> => {

@@ -1,10 +1,17 @@
-export interface ChurrascoResponse {
-  data: Date;
-  pessoas: number;
+export interface IChurrasco extends ChurrascoData {
+  id: string;
   carne: number;
   paoDeAlho: number;
   carvao: number;
   refri: number;
   cerveja: number;
-  botaoEdit: void;
+  pessoas: number;
+  
+}
+
+export interface ChurrascoData {
+  data: Date;
+  homens: number;
+  mulheres: number;
+  criancas?: number;
 }

@@ -2,27 +2,24 @@ import Navbar from "../components/Navbar/Navbar"
 import Churrasco from "../components/Churrasco/Churrasco"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import axios from "axios";
-import { excluir, getChurras, postChurras } from "../services/axios.service";
+import { excluir, getChurras } from "../services/axios.service";
+import { IChurrasco } from "../interfaces/ChurrascoResponse.interface";
 
 export default function Home() {
   const navigate = useNavigate();
-  const [lista, setLista] = useState<any[]>([]) 
+  const [lista, setLista] = useState<IChurrasco[]>([]) 
   const [loading, setLoading] = useState(true)
 
-  const deletar =  (ref:string) => {
-    // axios.delete(`http://localhost:3000/churrascos/${ref}`).then(() => getChurras());
-    const del =  excluir(ref).then(() => getChurras().then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) ))
+  const deletar =  (id:string) => {
+    const del =  excluir(id).then(() => getChurras<IChurrasco[]>().then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) ))
   }
-
-  // const getChurras = () => axios.get("http://localhost:3000/churrascos").then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) );  
+  
   useEffect(() => {
-    getChurras().then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) );
-    
+    getChurras<IChurrasco[]>().then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) );
   }, []);
 
-  const edit = (ref:any) => {
-    navigate('/editchurras', {state: {ref}})
+  const edit = (id: IChurrasco) => {
+    navigate('/editchurras', {state: {id}})
   }
 
   return (
@@ -41,7 +38,8 @@ export default function Home() {
           <h4 className="w-[15%] bg-slate-200 text-center">Editar/ Excluir</h4>
         </div> }
         <div>
-          {loading ? <h2 className="text-center m-[100px] text-slate-600 font-bold text-4xl">Loading...</h2> : lista.map((e) => <Churrasco key={e.id} data={e.data} homens={e.homens} mulheres={e.mulheres} criancas={e.criancas} deleta={() => deletar(e.id)} editar={() => edit(e)} />)}
+        {/* carne, carvao, refri, cerveja, paoDeAlho, pessoas */}
+          {loading ? <h2 className="text-center m-[100px] text-slate-600 font-bold text-4xl">Loading...</h2> : lista.map((e) => <Churrasco key={e.id} data={e.data} pessoas={e.pessoas} carne={e.carne} carvao={e.carvao} refri={e.refri} cerveja={e.cerveja} paoDeAlho={e.paoDeAlho} deleta={() => deletar(e.id)} editar={() => edit(e)} />)}
         </div>
        
       </div>

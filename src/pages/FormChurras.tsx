@@ -37,8 +37,16 @@ export default function FormChurras() {
 
   const navigate = useNavigate();
 
+  
+
   const onSubmitThis = (data: Inputs ) => {
-    const post = postChurras(nanoid(), data).then(() => navigate('/'))
+    const criancas = data.criancas || 0;
+    const soma = data.homens + data.mulheres + criancas;
+    const carne = (data.homens * 0.4) + (data.mulheres * 0.32) + (criancas * 0.2);
+    const paoDeAlho = (data.homens * 2) + (data.mulheres * 2) + (criancas);
+    const refri = Math.ceil(soma / 5);
+    const cerveja = (data.homens + data.mulheres)
+    postChurras({id: nanoid(), carne, paoDeAlho, refri, cerveja, carvao:soma, pessoas: soma, ...data}).then(() => navigate('/'))
     reset();
     console.log(data);
     console.log(errors);

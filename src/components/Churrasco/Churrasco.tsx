@@ -2,30 +2,31 @@ import ItemChurars from "./components/ItemChurras";
 import ButtonItem from "./components/ButtonItem";
 import ItemData from "./components/ItemData";
 import { memo } from 'react';
+import { IChurrasco } from "../../interfaces/ChurrascoResponse.interface";
+
 
 interface Props {
-  mulheres:number;
-  homens: number;
-  criancas: number;
+  carne: number;
+  paoDeAlho: number;
+  carvao: number;
+  refri: number;
+  cerveja: number;
+  pessoas: number;
   data: Date;
-  editar: void;
-  deleta: void;
+  editar: () => void;
+  deleta: () => void;
 }
 
-const Churrasco = memo(function Churrasco({homens, mulheres, criancas, data, editar, deleta}: Props) {
-  let soma = homens + mulheres + criancas;
-  let carne = (homens * 0.4) + (mulheres * 0.32) + (criancas * 0.2);
-  let paoDeAlho = (homens * 2) + (mulheres * 2) + (criancas);
-  let refri = Math.ceil(soma / 5);
-  let cerveja = (homens + mulheres)
+const Churrasco = memo(function Churrasco({ data, editar, deleta, carne, carvao, refri, cerveja, paoDeAlho, pessoas}: Props) {
+  
   return (
     <div className="flex justify-between p-2">
       <ItemData item={data} classe={"w-[10%]"} />
       {/* <ItemChurars item={props.data} classe={"w-[10%]"} /> */}
-      <ItemChurars item={soma} classe={"w-[10%]"}/>
+      <ItemChurars item={pessoas} classe={"w-[10%]"}/>
       <ItemChurars item={carne.toFixed(2)} classe={"w-[13%]"} />
       <ItemChurars item={paoDeAlho} classe={"w-[13%]"}/>
-      <ItemChurars item={soma} classe={"w-[13%]"}/>
+      <ItemChurars item={carvao} classe={"w-[13%]"}/>
       <ItemChurars item={refri} classe={"w-[13%]"}/>
       <ItemChurars item={cerveja}classe={"w-[13%]"}/>
       <div className="w-[15%] flex justify-around flex-wrap gap-1">

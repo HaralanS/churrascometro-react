@@ -1,46 +1,30 @@
 {
   "churrascos": [
     {
-      "id": "R19YOKMDMMRMTVyno3Rsd",
-      "data": "2024-03-28T03:00:00.000Z",
-      "homens": 4,
-      "mulheres": 4,
-      "criancas": 3
-    },
-    {
-      "id": "mYmKbwPXi6lZWgBNElbOa",
-      "data": "2024-03-21T03:00:00.000Z",
-      "homens": 2,
+      "id": "KXotebsREpmU3XULRucwI",
+      "carne": 1.64,
+      "paoDeAlho": 9,
+      "refri": 1,
+      "cerveja": 4,
+      "carvao": 5,
+      "pessoas": 5,
+      "criancas": 1,
       "mulheres": 2,
-      "criancas": 0
-    },
-    {
-      "id": "33jPBBVYfkNRo39uKRn2t",
-      "data": "2024-03-29T03:00:00.000Z",
-      "homens": 4,
-      "mulheres": 1,
-      "criancas": 0
-    },
-    {
-      "id": "53EtUnABMpSk5OyxLvFVm",
-      "data": "2024-03-21T03:00:00.000Z",
       "homens": 2,
-      "mulheres": 3,
-      "criancas": 1
+      "data": "2024-03-22T03:00:00.000Z"
     },
     {
-      "id": "tbKcqZAK9FrPKJTnQtahe",
-      "data": "2024-03-15T03:00:00.000Z",
+      "id": "meSeSqE8G5-8kUO5dnpz_",
+      "carne": 2.8400000000000003,
+      "paoDeAlho": 15,
+      "refri": 2,
+      "cerveja": 6,
+      "carvao": 9,
+      "pessoas": 9,
+      "criancas": 3,
+      "mulheres": 2,
       "homens": 4,
-      "mulheres": 4,
-      "criancas": 2
-    },
-    {
-      "id": "C_d58uw6r8NligSQg6AIE",
-      "data": "2024-03-22T03:00:00.000Z",
-      "homens": 5,
-      "mulheres": 5,
-      "criancas": 1
+      "data": "2024-03-17T03:00:00.000Z"
     }
   ]
 }

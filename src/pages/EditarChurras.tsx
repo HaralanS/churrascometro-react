@@ -25,7 +25,7 @@ const schema = yup.object({
 
 export default function EditChurras() {
   const location = useLocation();
-  const churrasco = location.state.ref;
+  const churrasco = location.state.id;
   
   const {
     register,
