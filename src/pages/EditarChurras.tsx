@@ -8,6 +8,7 @@ import axios from "axios";
 import Input from "../components/FormChurras/components/Input";
 import PageTitle from "../components/PageTitle/PageTitle";
 import { edit } from "../services/axios.service";
+import { useChurrascosStore } from "../zustand/churrasco.zustand";
 
 interface Inputs {
   data: Date
@@ -25,7 +26,8 @@ const schema = yup.object({
 
 export default function EditChurras() {
   const location = useLocation();
-  const churrasco = location.state.id;
+  const churrasco = location.state.churrasco;
+  const {handleEditChurrasco} = useChurrascosStore();
   
   const {
     register,
@@ -39,8 +41,13 @@ export default function EditChurras() {
   
   const navigate = useNavigate();
 
+  // const onSubmitThis = (data: Inputs) => {
+  //   edit(churrasco, data).then(() => navigate('/'));
+    
+  // }
+
   const onSubmitThis = (data: Inputs) => {
-    const editar = edit(churrasco, data).then(() => navigate('/'));
+    handleEditChurrasco(data, churrasco.id).then(() => navigate('/'))
     
   }
 

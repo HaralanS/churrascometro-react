@@ -15,3 +15,10 @@ export interface ChurrascoData {
   mulheres: number;
   criancas?: number;
 }
+
+export interface Inputs {
+  data: Date
+  homens: number
+  mulheres: number
+  criancas ?: number;
+}

@@ -8,6 +8,9 @@ import PageTitle from "../components/PageTitle/PageTitle";
 import Input from "../components/FormChurras/components/Input"
 import { postChurras } from "../services/axios.service";
 import { useNavigate } from "react-router-dom";
+import { useChurrascosStore } from "../zustand/churrasco.zustand";
+import { useEffect } from "react";
+
 
 interface Inputs {
   data: Date
@@ -36,21 +39,20 @@ export default function FormChurras() {
   })
 
   const navigate = useNavigate();
+  const {handleCreateChurrascos} = useChurrascosStore();
 
-  
-
-  const onSubmitThis = (data: Inputs ) => {
-    const criancas = data.criancas || 0;
-    const soma = data.homens + data.mulheres + criancas;
-    const carne = (data.homens * 0.4) + (data.mulheres * 0.32) + (criancas * 0.2);
-    const paoDeAlho = (data.homens * 2) + (data.mulheres * 2) + (criancas);
-    const refri = Math.ceil(soma / 5);
-    const cerveja = (data.homens + data.mulheres)
-    postChurras({id: nanoid(), carne, paoDeAlho, refri, cerveja, carvao:soma, pessoas: soma, ...data}).then(() => navigate('/'))
-    reset();
-    console.log(data);
-    console.log(errors);
-  }
+  // const onSubmitThis = (data: Inputs ) => {
+  //   const criancas = data.criancas || 0;
+  //   const soma = data.homens + data.mulheres + criancas;
+  //   const carne = (data.homens * 0.4) + (data.mulheres * 0.32) + (criancas * 0.2);
+  //   const paoDeAlho = (data.homens * 2) + (data.mulheres * 2) + (criancas);
+  //   const refri = Math.ceil(soma / 5);
+  //   const cerveja = (data.homens + data.mulheres)
+  //   postChurras({id: nanoid(), carne, paoDeAlho, refri, cerveja, carvao:soma, pessoas: soma, ...data}).then(() => navigate('/'))
+  //   reset();
+  //   console.log(data);
+  //   console.log(errors);
+  // }
 
   function formatDate(date = new Date()) {
     date.setDate(date.getDate() + 1);
@@ -63,11 +65,12 @@ export default function FormChurras() {
     return [year, month, day].join('-');
   }
 
+
   return (
     <>
     <Navbar />
     <PageTitle title="Crie seu Churrasco" />
-    <form className="flex flex-col w-[300px] m-auto mt-[50px] bg-slate-500 p-4 rounded-lg gap-1" onSubmit={handleSubmit(onSubmitThis)} >
+    <form className="flex flex-col w-[300px] m-auto mt-[50px] bg-slate-500 p-4 rounded-lg gap-1" onSubmit={handleSubmit(handleCreateChurrascos)} >
       
       <Input defaultValue={formatDate(new Date())} nameLabel="Data:" name="data" type="date" register={register} error={errors.data}  />
       <Input defaultValue={0} nameLabel="Homens:" name="homens" type="number" register={register} error={errors.homens} />

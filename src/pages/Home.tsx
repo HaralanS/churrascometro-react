@@ -26,8 +26,8 @@ export default function Home() {
     handleGetChurrascos();
   }, [])
 
-  const edit = (id: IChurrasco) => {
-    navigate('/editchurras', {state: {id}})
+  const edit = (churrasco: IChurrasco) => {
+    navigate('/editchurras', {state: {churrasco}})
   }
 
   return (
