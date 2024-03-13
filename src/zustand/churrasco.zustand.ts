@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { IChurrasco, Inputs } from '../interfaces/ChurrascoResponse.interface';
-import { getChurras, postChurras, edit } from '../services/axios.service';
+import { getChurras, postChurras, edit, excluir } from '../services/axios.service';
 import { nanoid } from 'nanoid'
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ interface ChurrascoState {
   handleGetChurrascos: () => Promise<void>; 
   handleCreateChurrascos: (data: Inputs) => Promise<void>;
   handleEditChurrasco: (data: Inputs, churrasco: string) => Promise<void>;
+  handleExluirChurrasco: (id: string) => Promise<void>;
   
 }
 
@@ -42,6 +43,9 @@ const useChurrascosStore = create<ChurrascoState>()(
         const refri = Math.ceil(soma / 5);
         const cerveja = (data.homens + data.mulheres);
         await edit(churrasco, data, carne, paoDeAlho, refri, cerveja, soma, soma);
+      },
+      handleExluirChurrasco: async (id) => {
+        excluir(id);
       }
 
   }))

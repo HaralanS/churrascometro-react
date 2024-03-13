@@ -1,29 +1,27 @@
-import Navbar from "../components/Navbar/Navbar"
-import Churrasco from "../components/Churrasco/Churrasco"
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { excluir, getChurras } from "../services/axios.service";
+import Navbar from "../components/Navbar/Navbar";
+import Churrasco from "../components/Churrasco/Churrasco";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { IChurrasco } from "../interfaces/ChurrascoResponse.interface";
 import { useChurrascosStore } from "../zustand/churrasco.zustand";
 
 export default function Home() {
   const navigate = useNavigate();
-  const [lista, setLista] = useState<IChurrasco[]>([]) 
+  // const [lista, setLista] = useState<IChurrasco[]>([]) 
   const [loading, setLoading] = useState(true)
-  const { listChurrasco, handleGetChurrascos} = useChurrascosStore();
+  const { listChurrasco, handleGetChurrascos, handleExluirChurrasco} = useChurrascosStore();
 
-  const deletar =  (id:string) => {
-    const del =  excluir(id).then(() => getChurras<IChurrasco[]>().then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) ))
+  const deletar = (id:string) => {
+    handleExluirChurrasco(id).then(() => location.reload());
   }
-  
-  
 
   // useEffect(() => {
   //   getChurras<IChurrasco[]>().then(response => setLista(response.data)).catch(error => console.log(error)).finally( () => setLoading(false) );
   // }, []);
 
   useEffect(() => {
-    handleGetChurrascos();
+    handleGetChurrascos().then(() => setLoading(false));
+   
   }, [])
 
   const edit = (churrasco: IChurrasco) => {
@@ -46,9 +44,9 @@ export default function Home() {
           <h4 className="w-[15%] bg-slate-200 text-center">Editar/ Excluir</h4>
         </div> }
         <div>
-        {/* carne, carvao, refri, cerveja, paoDeAlho, pessoas */}
-          {/* {loading ? <h2 className="text-center m-[100px] text-slate-600 font-bold text-4xl">Loading...</h2> : listChurrasco.map((e) => <Churrasco key={e.id} data={e.data} pessoas={e.pessoas} carne={e.carne} carvao={e.carvao} refri={e.refri} cerveja={e.cerveja} paoDeAlho={e.paoDeAlho} deleta={() => deletar(e.id)} editar={() => edit(e)} />)} */}
-          {listChurrasco.map((e) => <Churrasco key={e.id} data={e.data} pessoas={e.pessoas} carne={e.carne} carvao={e.carvao} refri={e.refri} cerveja={e.cerveja} paoDeAlho={e.paoDeAlho} deleta={() => deletar(e.id)} editar={() => edit(e)} />)}
+          {loading ? <div  className="m-auto mt-[100px] h-32 w-32 animate-spin rounded-full border-[8px] border-solid border-blue-600 border-e-transparent"
+  role="status"></div> : listChurrasco.map((e) => <Churrasco key={e.id} data={e.data} pessoas={e.pessoas} carne={e.carne} carvao={e.carvao} refri={e.refri} cerveja={e.cerveja} paoDeAlho={e.paoDeAlho} deleta={() => deletar(e.id)} editar={() => edit(e)} />)}
+          {/* {listChurrasco.map((e) => <Churrasco key={e.id} data={e.data} pessoas={e.pessoas} carne={e.carne} carvao={e.carvao} refri={e.refri} cerveja={e.cerveja} paoDeAlho={e.paoDeAlho} deleta={() => deletar(e.id)} editar={() => edit(e)} />)} */}
         </div>
        
       </div>

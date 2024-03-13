@@ -30,11 +30,16 @@ const Churrasco = memo(function Churrasco({ data, editar, deleta, carne, carvao,
       <ItemChurars item={refri} classe={"w-[13%]"}/>
       <ItemChurars item={cerveja}classe={"w-[13%]"}/>
       <div className="w-[15%] flex justify-around flex-wrap gap-1">
-        <ButtonItem btnFunc={editar} btnName='Editar' classe={'bg-green-600 pl-2 pr-2'}/>
-        <ButtonItem btnFunc={deleta} btnName='Excluir' classe={'bg-red-600 pl-2 pr-2'} />
+        <ButtonItem btnFunc={editar} btnName='💾' classe={''}/>
+        <ButtonItem btnFunc={deleta} btnName='❌' classe={'bg-red-600 pl-2 pr-2 text-white'} />
       </div>
     </div>
+
+    
   )
 })
+
+// bg-green-600 pl-2 pr-2 text-white
+// bg-red-600 pl-2 pr-2 text-white
 
 export default Churrasco

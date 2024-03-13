@@ -65,12 +65,17 @@ export default function FormChurras() {
     return [year, month, day].join('-');
   }
 
+  const onSubmitThis = (data: Inputs) => {
+    handleCreateChurrascos(data).then(() => navigate('/'))
+    
+  }
+
 
   return (
     <>
     <Navbar />
     <PageTitle title="Crie seu Churrasco" />
-    <form className="flex flex-col w-[300px] m-auto mt-[50px] bg-slate-500 p-4 rounded-lg gap-1" onSubmit={handleSubmit(handleCreateChurrascos)} >
+    <form className="flex flex-col w-[300px] m-auto mt-[50px] bg-slate-500 p-4 rounded-lg gap-1" onSubmit={handleSubmit(onSubmitThis)} >
       
       <Input defaultValue={formatDate(new Date())} nameLabel="Data:" name="data" type="date" register={register} error={errors.data}  />
       <Input defaultValue={0} nameLabel="Homens:" name="homens" type="number" register={register} error={errors.homens} />
