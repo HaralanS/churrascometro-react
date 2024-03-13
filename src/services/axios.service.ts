@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { IChurrasco } from '../interfaces/ChurrascoResponse.interface';
 
 
-const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 // import.meta.env.BASE_URL
 
 
