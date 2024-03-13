@@ -1,15 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, SubmitHandler } from "react-hook-form"
-import * as yup from "yup"
-import { nanoid } from 'nanoid'
-import axios from "axios";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 import Navbar from "../components/Navbar/Navbar";
 import PageTitle from "../components/PageTitle/PageTitle";
-import Input from "../components/FormChurras/components/Input"
-import { postChurras } from "../services/axios.service";
+import Input from "../components/FormChurras/components/Input";
 import { useNavigate } from "react-router-dom";
 import { useChurrascosStore } from "../zustand/churrasco.zustand";
-import { useEffect } from "react";
+
 
 
 interface Inputs {
@@ -30,8 +27,6 @@ export default function FormChurras() {
   const {
     register,
     handleSubmit,
-    reset,
-    watch,
     formState: { errors },
   } = useForm<Inputs>({
     resolver: yupResolver(schema),

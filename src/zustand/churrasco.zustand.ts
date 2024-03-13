@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { IChurrasco, Inputs } from '../interfaces/ChurrascoResponse.interface';
 import { getChurras, postChurras, edit, excluir } from '../services/axios.service';
 import { nanoid } from 'nanoid'
-import { useNavigate } from 'react-router-dom';
 
 interface ChurrascoState {
   listChurrasco: IChurrasco[];
