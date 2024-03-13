@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Rotas from './routes/Rotas'
 import './App.css'
 

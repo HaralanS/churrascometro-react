@@ -1,4 +1,4 @@
-import { FieldError, FieldErrors } from 'react-hook-form';
+import { FieldError } from 'react-hook-form';
 
 interface InputTypes extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   nameLabel: string;

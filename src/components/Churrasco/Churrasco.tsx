@@ -2,8 +2,6 @@ import ItemChurars from "./components/ItemChurras";
 import ButtonItem from "./components/ButtonItem";
 import ItemData from "./components/ItemData";
 import { memo } from 'react';
-import { IChurrasco } from "../../interfaces/ChurrascoResponse.interface";
-
 
 interface Props {
   carne: number;
