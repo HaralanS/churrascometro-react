@@ -1,30 +1,28 @@
-# React + TypeScript + Vite
+# Projeto React: Churrascômetro - Ada Tech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido durante o segundo módulo de React do curso Ada Tech. A aplicação consiste em uma calculadora que você insere a quantidade de pessoas para o churrasco e, em seguida, ela calcula automaticamente a quantidade de alimentos e bebidas necessários para o evento.
 
-Currently, two official plugins are available:
+Acesse: https://churrascometro-react-theta.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 Tecnologias usadas:
 
-## Expanding the ESLint configuration
+* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+* ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+* ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+* ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+* ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+* ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 👷 Grupo CodeVerse:
 
-- Configure the top-level `parserOptions` property like this:
+- <a href='https://github.com/ananeres'>Ana Patrícia</a>
+- <a href='https://github.com/AndersonS7'>Anderson Silva</a>
+- <a href='https://github.com/juninho-Oliveira'>Damião Junior</a>
+- <a href='https://github.com/elizacso'>Eliza Reis</a>
+- <a href='https://github.com/HaralanS'>Haralan Santana</a>
+- <a href='https://github.com/VictorCallegari'>Victor Callegari</a>
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Descrição do projeto: 
+ 
+ Para a realização desse projeto, foi necessário utilizar Tailwind UI para estilização, JSON Server para simular o backend, Axios para fazer chamadas HTTP, React com Vite, React Router Dom, React Hook Forms e Context Api.
