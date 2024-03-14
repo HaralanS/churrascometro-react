@@ -31,9 +31,9 @@ export default function Home() {
   return (
     <div>
       <Navbar option />
-      <div className="min-w-[400px] max-w-[800px] m-auto">
+      <div className=" max-w-[800px] m-auto overflow-x-scroll">
         <h2 className="font-bold text-xl p-5">Lista de Churrascos</h2>
-        {listChurrasco.length > 0 && <div className="flex justify-between items-center p-2  font-semibold border-b-2 border-gray-500 bg-slate-200">
+        {listChurrasco.length > 0 && <div className="min-w-[500px] flex justify-between items-center p-2  font-semibold border-b-2 border-gray-500 bg-slate-200">
           <h4 className="w-[10%] text-center">Data</h4>
           <h4 className="w-[10%]  bg-slate-200 text-center">Pessoas</h4>
           <h4 className="w-[13%] text-center">Carne (kg)</h4>
@@ -43,7 +43,7 @@ export default function Home() {
           <h4 className="w-[13%] text-center">Cerveja (garrafa)</h4>
           <h4 className="w-[15%] bg-slate-200 text-center">Editar/ Excluir</h4>
         </div> }
-        <div>
+        <div className="min-w-[500px] ">
           {/* {loading ? <div  className="m-auto mt-[100px] h-32 w-32 animate-spin rounded-full border-[8px] border-solid border-blue-600 border-e-transparent"
   role="status"></div> : listChurrasco.map((e) => <Churrasco key={e.id} data={e.data} pessoas={e.pessoas} carne={e.carne} carvao={e.carvao} refri={e.refri} cerveja={e.cerveja} paoDeAlho={e.paoDeAlho} deleta={() => deletar(e.id)} editar={() => edit(e)} />)} */}
           {listChurrasco.map((e) => <Churrasco key={e.id} data={e.data} pessoas={e.pessoas} carne={e.carne} carvao={e.carvao} refri={e.refri} cerveja={e.cerveja} paoDeAlho={e.paoDeAlho} deleta={() => deletar(e.id)} editar={() => edit(e)} />)}
