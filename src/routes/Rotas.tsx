@@ -17,7 +17,7 @@ export default function Rotas() {
             <Home />
           </React.Suspense>  
         } />
-         <Route path="/formchurras" element={
+         <Route path="/createchurras" element={
           <React.Suspense fallback={<div  className="m-auto mt-[100px] h-32 w-32 animate-spin rounded-full border-[8px] border-solid border-blue-600 border-e-transparent"
           role="status"></div>}>
             <FormChurras />

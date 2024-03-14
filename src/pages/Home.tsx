@@ -12,7 +12,7 @@ export default function Home() {
   const { listChurrasco, handleGetChurrascos, handleExluirChurrasco} = useChurrascosStore();
 
   const deletar = (id:string) => {
-    handleExluirChurrasco(id).then(() => location.reload());
+    handleExluirChurrasco(id).then(() => handleGetChurrascos());
   }
 
   // useEffect(() => {

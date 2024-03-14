@@ -17,11 +17,13 @@ const useChurrascosStore = create<ChurrascoState>()(
   (set: any, get: any) => ({
       listChurrasco: [],
       setListChurrasco: (value) => {
+        
           set({ listChurrasco: value })
       },
       handleGetChurrascos: async () => {
           const { setListChurrasco } = get();
           const resp = await getChurras<IChurrasco[]>();
+          
           setListChurrasco(resp.data);
           // set({ list: resp.data })
       }, 
@@ -44,7 +46,7 @@ const useChurrascosStore = create<ChurrascoState>()(
         await edit(churrasco, data, carne, paoDeAlho, refri, cerveja, soma, soma);
       },
       handleExluirChurrasco: async (id) => {
-        excluir(id);
+        await excluir(id);
       }
 
   }))
