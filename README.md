@@ -25,4 +25,4 @@ Acesse: https://churrascometro-react-theta.vercel.app/
 
 ## Descrição do projeto: 
  
- Para a realização desse projeto, foi necessário utilizar Tailwind UI para estilização, JSON Server para simular o backend, Axios para fazer chamadas HTTP, React com Vite, React Router Dom, React Hook Forms e Context Api.
+ Para a realização desse projeto, foi necessário utilizar JSON Server para simular o backend, Tailwind UI para estilização, Axios para fazer chamadas HTTP, React com Vite, React Router Dom, React Hook Forms, Context Api e Zustand.
