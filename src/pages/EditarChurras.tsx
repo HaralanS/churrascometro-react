@@ -15,10 +15,10 @@ interface Inputs {
 }
 
 const schema = yup.object({
-    data: yup.date().min(new Date(), 'Erro min data').required('Erro na data'),
-    homens: yup.number().positive('Precisa ter pelo menos 1 homem').integer().required("O campo homens e necessario"),
-    mulheres: yup.number().positive('Precisa ter pelo menos 1 mulher').integer().required("O campo homens e necessario"),
-    criancas: yup.number().min(0, "Criancas nao pode ser negativo").integer()
+    data: yup.date().min(new Date(), 'Data nao pode ser igual ou inferior a hoje').required('Erro na data'),
+    homens: yup.number().positive('Precisa ter pelo menos 1 homem').integer('Precisa ser um numero inteiro').required("O campo homens e necessario"),
+    mulheres: yup.number().positive('Precisa ter pelo menos 1 mulher').integer('Precisa ser um numero inteiro').required("O campo homens e necessario"),
+    criancas: yup.number().min(0, "Criancas nao pode ser negativo").integer('Precisa ser um numero inteiro')
   }).required()
 
 export default function EditChurras() {
